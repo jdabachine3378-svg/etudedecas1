@@ -1,0 +1,76 @@
+﻿### Variables
+@baseUrl = http://localhost:8080
+
+### 1. TEST CRÉATION CATÉGORIE
+POST {{baseUrl}}/categories
+Content-Type: application/json
+
+{
+  "name": "Électronique",
+  "description": "Appareils électroniques et accessoires"
+}
+
+### 2. TEST LISTE CATÉGORIES
+GET {{baseUrl}}/categories?page=0&size=10
+Content-Type: application/json
+
+### 3. TEST CRÉATION PRODUIT
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+{
+  "name": "Smartphone Samsung",
+  "price": 699.99,
+  "stock": 50,
+  "description": "Smartphone Android haut de gamme",
+  "categoryId": 1
+}
+
+### 4. TEST LISTE PRODUITS
+GET {{baseUrl}}/items?page=0&size=10
+Content-Type: application/json
+
+### 5. TEST PRODUITS PAR CATÉGORIE
+GET {{baseUrl}}/items?categoryId=1&page=0&size=10
+Content-Type: application/json
+
+### 6. TEST RELATION CATÉGORIE → PRODUITS
+GET {{baseUrl}}/categories/1/items?page=0&size=10
+Content-Type: application/json
+
+### 7. TEST CATÉGORIE PAR ID
+GET {{baseUrl}}/categories/1
+Content-Type: application/json
+
+### 8. TEST PRODUIT PAR ID
+GET {{baseUrl}}/items/1
+Content-Type: application/json
+
+### 9. TEST MODIFICATION CATÉGORIE
+PUT {{baseUrl}}/categories/1
+Content-Type: application/json
+
+{
+  "name": "Électronique Modifié",
+  "description": "Description mise à jour"
+}
+
+### 10. TEST MODIFICATION PRODUIT
+PUT {{baseUrl}}/items/1
+Content-Type: application/json
+
+{
+  "name": "Smartphone Samsung Galaxy",
+  "price": 749.99,
+  "stock": 45,
+  "description": "Nouveau modèle",
+  "categoryId": 1
+}
+
+### 11. TEST SUPPRESSION PRODUIT
+DELETE {{baseUrl}}/items/1
+Content-Type: application/json
+
+### 12. TEST SUPPRESSION CATÉGORIE
+DELETE {{baseUrl}}/categories/1
+Content-Type: application/json

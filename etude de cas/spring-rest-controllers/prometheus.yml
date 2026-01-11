@@ -1,0 +1,19 @@
+﻿global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  # Configuration pour votre application Spring Boot
+  - job_name: 'spring-boot-benchmark'
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 3s
+    static_configs:
+      - targets: ['localhost:8080']
+        labels:
+          application: 'Spring-REST-Controller-Benchmark'
+          variant: 'C'
+
+  # Configuration pour Prometheus lui-même
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
